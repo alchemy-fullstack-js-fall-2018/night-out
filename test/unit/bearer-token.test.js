@@ -5,7 +5,7 @@ describe('bearer-token middleware', () => {
         const token = 'ghost';
         const req = {
             get: () => {
-                return `bearer ${token}`;
+                return `Bearer ${token}`;
             }
         };
 
