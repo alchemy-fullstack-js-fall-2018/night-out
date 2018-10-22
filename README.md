@@ -5,7 +5,7 @@
 #### Created By:
 #### Ryan Luras, ryanluras@gmail.com, @RyLuras
 #### Alex Rankin, alex.c.rankin@gmail.com, @acrankin
-#### Mack Berliner, mack.bg94#gmail.com, @MackenzieBerliner-Glasser
+#### Mack Berliner, mack.bg94@gmail.com, @MackenzieBerliner-Glasser
 #### Sophie Graham, sophierhraham1@gmail.com, @sophiegraham
 
 ## Description
