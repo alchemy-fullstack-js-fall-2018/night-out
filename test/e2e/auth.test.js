@@ -16,7 +16,7 @@ const checkOk = res => checkStatus(200)(res);
 const withToken = user => {
     return request(app)
         .post('/api/auth/signin')
-        .send({ email: `${user.email}`, clearPassword: `${user.clearPassword}`})
+        .send({ email: user.email, clearPassword: user.clearPassword })
         .then(({ body }) => body.token);
 };
 
@@ -48,7 +48,6 @@ describe('user routes', () => {
     });
 
     let token;
-
     beforeEach(() => {
         return withToken(users[0]).then(createdToken => {
             token = createdToken;
@@ -75,4 +74,27 @@ describe('user routes', () => {
                 });
             });
     });
+
+    it('signs in a user', () => {
+        return request(app)
+            .post('/api/auth/signin')
+            .send({ email: createdUsers[0].email, clearPassword: users[0].clearPassword })
+            .then(res => {
+                checkOk(res);
+                expect(res.body.token).toEqual(expect.any(String));
+            });
+    });
+
+    it('verifies a signed in user', () => {
+        return withToken(users[0])
+            .then(token => {
+                return request(app)
+                    .get('/api/auth/verify')
+                    .set('Authorization', `Bearer ${token}`)
+                    .then(res => {
+                        expect(res.body).toEqual({ success: true });
+                    });
+            });
+    });
+
 });
