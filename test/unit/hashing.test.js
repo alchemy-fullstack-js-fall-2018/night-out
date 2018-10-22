@@ -5,4 +5,10 @@ describe('password helper', () => {
         const hashedPassword = hash('pumpkin');
         expect(hashedPassword).not.toEqual('pumpkin');
     });
+
+    it('compare password', () => {
+        const hashedPassword = hash('pumpkin');
+        const comparePassword = compare('pumpkin', hashedPassword);
+        expect(comparePassword).toBeTruthy();
+    });
 });
