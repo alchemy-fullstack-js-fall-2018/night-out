@@ -11,4 +11,10 @@ describe('password helper', () => {
         const comparePassword = compare('pumpkin', hashedPassword);
         expect(comparePassword).toBeTruthy();
     });
+
+    it('compares a bad password', () => {
+        const hashedPassword = hash('pumpkin');
+        const comparePassword = compare('pumpkins', hashedPassword);
+        expect(comparePassword).toBeFalsy();
+    });
 });
