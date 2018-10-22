@@ -27,7 +27,6 @@
         "mongoose": "^5.3.3",
         "morgan": "^1.9.1",
         "node-wit": "^5.0.0",
-        "opn": "^5.4.0",
         "superagent": "^4.0.0-beta.5"
     }
 }
