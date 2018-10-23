@@ -5,7 +5,7 @@ const { Types } = require('mongoose');
 describe('Evening model', () => {
     it('validated a good evening model', () => {
         const data = {
-            user_id: Types.ObjectId(),
+            user: Types.ObjectId(),
             rating: 'liked',
             logs: []
         };
@@ -19,7 +19,7 @@ describe('Evening model', () => {
         const evening = new Evening ({});
 
         const errors = getErrors(evening.validateSync(), 3);
-        expect(errors.user_id.properties.message).toEqual('user_id required');
+        expect(errors.user.properties.message).toEqual('user_id required');
         expect(errors.logs.properties.message).toEqual('Three Google Place Id\'s required');
         expect(errors.price.properties.message).toEqual('price required 0-4');
 

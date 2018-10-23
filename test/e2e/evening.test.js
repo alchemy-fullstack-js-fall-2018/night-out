@@ -18,7 +18,6 @@ const withToken = user => {
 };
 
 
-
 describe('validates a vertical slice of the Evening model', () => {
 
 
@@ -64,9 +63,10 @@ describe('validates a vertical slice of the Evening model', () => {
             .then(res => {
                 expect(res.body).toEqual({
                     _id: expect.any(String),
-                    user_id: createdUsers[0]._id,
+                    user: createdUsers[0]._id,
                     rating: 'unknown',
-                    logs: expect.any(Array),
+                    price: expect.any(Number),
+                    logs: expect.any(Array)
                 });
             });
     });
