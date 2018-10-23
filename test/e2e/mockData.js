@@ -70,6 +70,7 @@ const createLog = log => {
         .then(res => res.body);
 };
 
+
 beforeEach(() => {
     return Promise.all(users.map(createUser)).then(userRes => {
         createdUsers = userRes;
@@ -83,6 +84,8 @@ beforeEach(() => {
         logs[1].user_id = createdUsers[1]._id;
     });
 });
+
+
 
 const getUsers = () => createdUsers;
 const getLogs = () => createdLogs;
