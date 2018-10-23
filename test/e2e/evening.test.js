@@ -55,7 +55,7 @@ describe('validates a vertical slice of the Evening model', () => {
         });
     });
 
-    it('Posts an evening', () => {
+    it.skip('Posts an evening', () => {
 
         return request(app)
             .post('/api/evenings')

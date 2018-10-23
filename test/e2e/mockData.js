@@ -42,14 +42,16 @@ let users = [
 let logs = [
     {
         place_id: 'ChIJIfBAsjeuEmsRdgu9Pl1Ps48',
-        user_id: Types.ObjectId(),
+        name: 'some of garden',
+        user: Types.ObjectId(),
         rating: 'liked',
         tags: ['cheap', 'quiet', 'italian'],
         price: 1
     },
     {
         place_id: 'ChIJIfBAsjeuEmsRdgu9Pl1Ps73',
-        user_id: Types.ObjectId(),
+        name: 'bamboo sushi',
+        user: Types.ObjectId(),
         rating: 'disliked',
         tags: ['expensive', 'quiet', 'sushi'],
         price: 4
