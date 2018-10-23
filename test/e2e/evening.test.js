@@ -19,7 +19,8 @@ const withToken = user => {
 
 
 
-xdescribe('validates a vertical slice of the Evening model', () => {
+describe('validates a vertical slice of the Evening model', () => {
+
 
     const users = Array.apply(null, { length: 1 })
         .map(() => ({ 
@@ -69,4 +70,19 @@ xdescribe('validates a vertical slice of the Evening model', () => {
                 });
             });
     });
+
+    // it('updates an evening', () => {
+
+    //     return request(app)
+    //         .put('api/evenings')
+    //         .set('Authorization', `Bearer ${token}`);
+    //         .send({
+
+    //         })
+    //         .then(res => {
+    //             expect(res.body).toEqual({
+                    
+    //             })
+    //         })
+    // })
 });
