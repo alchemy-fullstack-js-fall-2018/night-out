@@ -6,7 +6,7 @@
     "scripts": {
         "jest": "jest --verbose",
         "test": "npm run jest",
-        "test:watch": "npm run jest -- --watch",
+        "test:watch": "npm run jest -- --runInBand --watch",
         "start:watch": "nodemon index.js",
         "start": "node index.js"
     },
