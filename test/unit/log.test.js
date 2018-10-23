@@ -6,7 +6,7 @@ describe('log model', () => {
     it('validates a good model', () => {
         const data = {
             place_id: 'ChIJIfBAsjeuEmsRdgu9Pl1Ps48', 
-            user_id: Types.ObjectId(),
+            user: Types.ObjectId(),
             rating: 'liked',
             tags: ['happy hour', 'mexican', 'bar'],
             price: 2
@@ -22,8 +22,7 @@ describe('log model', () => {
 
         const errors = getErrors(log.validateSync(), 5);
         expect(errors.place_id.properties.message).toEqual('place_id required');
-        expect(errors.user_id.properties.message).toEqual('user_id required');
-        expect(errors.rating.properties.message).toEqual('rating required');
+        expect(errors.user.properties.message).toEqual('user required');
         expect(errors.tags.properties.message).toEqual('at least one tag required');
         expect(errors.price.properties.message).toEqual('price required 0-4');
     });

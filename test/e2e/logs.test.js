@@ -1,8 +1,9 @@
+require('dotenv').config();
 const request = require('supertest');
 const app = require('../../lib/app');
 const { getUsers } = require('./mockData');
 
-describe('validates vertical sclices of log posts', () => {
+xdescribe('validates vertical slices of log posts', () => {
 
     it('posts a log', () => {
         const createdUsers = getUsers();

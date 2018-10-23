@@ -19,7 +19,7 @@ const withToken = user => {
 
 
 
-describe('validates a vertical slice of the Evening model', () => {
+xdescribe('validates a vertical slice of the Evening model', () => {
 
     const users = Array.apply(null, { length: 1 })
         .map(() => ({ 
