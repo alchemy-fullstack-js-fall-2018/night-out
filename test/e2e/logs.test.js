@@ -1,7 +1,6 @@
-require('dotenv').config();
+const { getLogs, getToken } = require('./mockData');
 const request = require('supertest');
 const app = require('../../lib/app');
-const { getLogs, getToken } = require('./mockData');
 
 describe('validates vertical slices of log posts', () => {
 
