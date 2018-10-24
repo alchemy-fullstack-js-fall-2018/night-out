@@ -4,6 +4,7 @@ const { dropCollection } = require('../util/db');
 const request = require('supertest');
 const app = require('../../lib/app');
 const { Types } = require('mongoose');
+const Log = require('../../lib/models/Log');
 
 beforeEach(() => {
     return dropCollection('users');
@@ -66,16 +67,28 @@ const createUser = user => {
 };
 
 const createLog = log => {
+    return Log.create(log)
+        .then(log => JSON.parse(JSON.stringify(log)));
+};
+
+const withToken = user => {
     return request(app)
-        .post('/api/logs')
-        .send(log)
-        .then(res => res.body);
+        .post('/api/auth/signin')
+        .send({ email: user.email, clearPassword: user.clearPassword })
+        .then(({ body }) => body.token);
 };
 
 
 beforeEach(() => {
     return Promise.all(users.map(createUser)).then(userRes => {
         createdUsers = userRes;
+    });
+});
+
+let token;
+beforeEach(() => {
+    return withToken(users[0]).then(createdToken => {
+        token = createdToken;
     });
 });
 
@@ -91,9 +104,11 @@ beforeEach(() => {
 
 const getUsers = () => createdUsers;
 const getLogs = () => createdLogs;
+const getToken = () => token;
 
 module.exports = {
     getUsers,
-    getLogs
+    getLogs,
+    getToken
 };
 
