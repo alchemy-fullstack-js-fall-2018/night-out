@@ -58,7 +58,7 @@ describe('validates a vertical slice of the Evening model', () => {
         });
     });
 
-    it.skip('Posts an evening', () => {
+    it('Posts an evening', () => {
 
         return request(app)
             .post('/api/evenings')
@@ -67,7 +67,7 @@ describe('validates a vertical slice of the Evening model', () => {
             .then(res => {
                 expect(res.body).toEqual({
                     _id: expect.any(String),
-                    user_id: createdUsers[0]._id.toString(),
+                    user: createdUsers[0]._id.toString(),
                     rating: 'unknown',
                     logs: [{
                         _id:  expect.any(String),
