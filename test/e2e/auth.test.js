@@ -1,14 +1,6 @@
-const { getUsers, getToken } = require('./mockData');
+const { getToken } = require('./mockData');
 const app = require('../../lib/app');
 const request = require('supertest');
-
-
-const checkStatus = statusCode => res => {
-    expect(res.status).toEqual(statusCode);
-};
-
-const checkOk = res => checkStatus(200)(res);
-
 
 describe('user routes', () => {
    
