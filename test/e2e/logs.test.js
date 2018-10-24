@@ -45,4 +45,15 @@ describe('validates vertical slices of log posts', () => {
                 });
             });
     });
+  
+    it('gets all logs by user ID', () => {
+        const createdLogs = getLogs();
+        const createdUsers = getUsers();
+        const userId = createdLogs[0].user;
+
+        return request(app).get(`/api/logs/${userId}`)
+            .then(res => {
+                expect(res.body).toEqual([createdLogs[0]]);
+            });
+    });
 });
