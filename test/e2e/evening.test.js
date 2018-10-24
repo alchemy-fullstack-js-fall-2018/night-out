@@ -1,68 +1,19 @@
-
-require('dotenv').config();
-const { dropCollection } = require('../util/db');
-const User = require('../../lib/models/User');
-const Evening = require('../../lib/models/Evening');
-
+const { getUsers, getToken, getEvenings } = require('./mockData');
 const request = require('supertest');
 const app = require('../../lib/app');
-// const { getUsers } = require('./mockData');
-const Chance = require('chance');
-const chance = new Chance();
 
-
-const withToken = user => {
-    return request(app)
-        .post('/api/auth/signin')
-        .send({ email: user.email, clearPassword: user.clearPassword })
-        .then(({ body }) => body.token);
-};
 
 
 describe('validates a vertical slice of the Evening model', () => {
 
 
-    const users = Array.apply(null, { length: 1 })
-        .map(() => ({ 
-            name: chance.name(), 
-            clearPassword: chance.word(),
-            email: chance.email(),
-            zipcode: chance.zip(),
-            initialPreferences: [chance.word(), chance.word(), chance.word()]
-        }));
-
-    let createdUsers;
-
-    const createUser = user => {
-        return User.create(user);
-    };
-
-    beforeEach(() => {
-        return dropCollection('users');
-    }); 
-    beforeEach(() => {
-        return dropCollection('evenings');
-    });
-
-    beforeEach(() => {
-        return Promise.all(users.map(createUser))
-            .then(cs => {
-                createdUsers = cs;
-            });
-    });
-
-    let token;
-    beforeEach(() => {
-        return withToken(users[0]).then(createdToken => {
-            token = createdToken;
-        });
-    });
-
     it('Posts an evening', () => {
+
+        const createdUsers = getUsers();
 
         return request(app)
             .post('/api/evenings')
-            .set('Authorization', `Bearer ${token}`)
+            .set('Authorization', `Bearer ${getToken()}`)
             .send({ zipcode: 97209 })
             .then(res => {
                 expect(res.body).toEqual({
@@ -102,18 +53,24 @@ describe('validates a vertical slice of the Evening model', () => {
             });
     });
 
-    // it('updates an evening', () => {
+    it('updates an evening', () => {
+        const createdEvenings = getEvenings();
+        return request(app)
+            .put(`/api/evenings/${createdEvenings[0]._id}`)
+            .set('Authorization', `Bearer ${getToken()}`)
+            .send({ rating: 'liked' })
+            .then(res => {
+                expect(res.body).toEqual({ ...createdEvenings[0], rating: 'liked' });
+            });
+    });
 
-    //     return request(app)
-    //         .put('api/evenings')
-    //         .set('Authorization', `Bearer ${token}`);
-    //         .send({
-
-    //         })
-    //         .then(res => {
-    //             expect(res.body).toEqual({
-                    
-    //             })
-    //         })
-    // })
+    it('gets an evening by id', () => {
+        const createdEvenings = getEvenings();
+        return request(app)
+            .get(`/api/evenings/${createdEvenings[0]._id}`)
+            .set('Authorization', `Bearer ${getToken()}`)
+            .then(res => {
+                expect(res.body).toEqual(createdEvenings[0]);
+            });
+    });
 });

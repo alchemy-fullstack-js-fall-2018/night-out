@@ -15,6 +15,7 @@ beforeEach(() => {
 
 let createdUsers;
 let createdLogs;
+let createdEvenings;
 
 let users = [
     {
@@ -59,6 +60,19 @@ let logs = [
     }
 ];
 
+let zipcodes = [
+    {
+        zipcode: 97202
+    },
+    {
+        zipcode: 94103
+    },
+    {
+        zipcode: 94610
+    }
+];
+
+
 const createUser = user => {
     return request(app)
         .post('/api/auth/signup')
@@ -66,9 +80,18 @@ const createUser = user => {
         .then(res => res.body);
 };
 
+
 const createLog = log => {
     return Log.create(log)
         .then(log => JSON.parse(JSON.stringify(log)));
+};
+
+const createEvening = zipcode => {
+    return request(app)
+        .post('/api/evenings')
+        .send(zipcode)
+        .set('Authorization', `Bearer ${getToken()}`)
+        .then(res => res.body);
 };
 
 const withToken = user => {
@@ -86,29 +109,35 @@ beforeEach(() => {
 });
 
 let token;
+
 beforeEach(() => {
     return withToken(users[0]).then(createdToken => {
         token = createdToken;
     });
 });
 
+
 beforeEach(() => {
     return Promise.all(logs.map(createLog)).then(logRes => {
         createdLogs = logRes;
-        logs[0].user_id = createdUsers[0]._id;
-        logs[1].user_id = createdUsers[1]._id;
     });
 });
 
-
+beforeEach(() => {
+    return Promise.all(zipcodes.map(createEvening)).then(eveningRes => {
+        createdEvenings = eveningRes;
+    });
+});
 
 const getUsers = () => createdUsers;
 const getLogs = () => createdLogs;
 const getToken = () => token;
+const getEvenings = () => createdEvenings;
 
 module.exports = {
     getUsers,
     getLogs,
-    getToken
+    getToken,
+    getEvenings
 };
 
