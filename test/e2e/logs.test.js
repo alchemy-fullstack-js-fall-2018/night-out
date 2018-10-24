@@ -19,6 +19,7 @@ describe('validates vertical slices of log posts', () => {
                 price: 2
             })
             .then(res => {
+                console.log(res.body, "yoo######");
                 expect(res.body).toEqual({
                     _id: expect.any(String),
                     place_id: 'ChIJIfBAsjeuEmsRdgu9Pl1Ps48',
@@ -44,7 +45,7 @@ describe('validates vertical slices of log posts', () => {
                 });
             });
     });
-
+  
     it('gets all logs by user ID', () => {
         const createdLogs = getLogs();
         const createdUsers = getUsers();
