@@ -2,6 +2,7 @@
 require('dotenv').config();
 const { dropCollection } = require('../util/db');
 const User = require('../../lib/models/User');
+const Evening = require('../../lib/models/Evening');
 
 const request = require('supertest');
 const app = require('../../lib/app');
@@ -38,6 +39,9 @@ describe('validates a vertical slice of the Evening model', () => {
 
     beforeEach(() => {
         return dropCollection('users');
+    }); 
+    beforeEach(() => {
+        return dropCollection('evenings');
     });
 
     beforeEach(() => {
@@ -59,14 +63,41 @@ describe('validates a vertical slice of the Evening model', () => {
         return request(app)
             .post('/api/evenings')
             .set('Authorization', `Bearer ${token}`)
-            .send({})
+            .send({ zipcode: 97209 })
             .then(res => {
                 expect(res.body).toEqual({
                     _id: expect.any(String),
-                    user: createdUsers[0]._id,
+                    user_id: createdUsers[0]._id.toString(),
                     rating: 'unknown',
-                    price: expect.any(Number),
-                    logs: expect.any(Array)
+                    logs: [{
+                        _id:  expect.any(String),
+                        place_id: expect.any(String),
+                        user: createdUsers[0]._id.toString(),
+                        tags: expect.any(Array),
+                        name: expect.any(String),
+                        price: expect.any(Number),
+                        rating: 'unknown',
+                    }, 
+                    {
+                        _id:  expect.any(String),
+                        place_id: expect.any(String),
+                        user: createdUsers[0]._id.toString(),
+                        tags: expect.any(Array),
+                        name: expect.any(String),
+                        price: expect.any(Number),
+                        rating: 'unknown',
+                    }, 
+                    {
+                        _id:  expect.any(String),
+                        place_id: expect.any(String),
+                        user: createdUsers[0]._id.toString(),
+                        tags: expect.any(Array),
+                        name: expect.any(String),
+                        price: expect.any(Number),
+                        rating: 'unknown',
+                    }],
+                    price: expect.any(Number)
+
                 });
             });
     });

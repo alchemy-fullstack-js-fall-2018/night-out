@@ -17,9 +17,8 @@ describe('google map integration', () => {
     describe('google places integration', () => {
 
         it('retrieves results from location query', () => {
-            return getPlaces({ lat: 45.5266975, lng: -122.6880503 }, 'restaurant', 'quiet')
+            return getPlaces({ lat: 45.5266975, lng: -122.6880503 }, 'restaurant')
                 .then((res) => {
-                    console.log(res[0]);
                     expect(res[0].placeId).toEqual('ChIJb-hsVPgJlVQR022187swetk');
                     expect(res[0].name).toEqual('McMenamins Mission Theater');
                     expect(res[0].price).toEqual(2);

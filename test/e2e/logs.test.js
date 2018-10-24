@@ -9,7 +9,6 @@ describe('validates vertical slices of log posts', () => {
         const createdLogs = getLogs();
         const log = createdLogs[0];
 
-
         return request(app).put(`/api/logs/${log._id}`)
             .set('Authorization', `Bearer ${getToken()}`)
             .send({ rating: 'liked' })
