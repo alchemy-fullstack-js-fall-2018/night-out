@@ -7,7 +7,7 @@ describe('User Model', () => {
             name: 'bobby',
             email: 'bobby@bobby.com',
             zipcode: '94061',
-            initialPreferences: ['mexian', 'drinks', 'cheap', 'movies']
+            keywords: ['mexian', 'drinks', 'cheap', 'movies']
         };
         const user = new User(data);
         const jsonUser = user.toJSON();
@@ -17,10 +17,9 @@ describe('User Model', () => {
     it('validates that fields are required', () => {
         const user = new User ({});
 
-        const errors =  getErrors(user.validateSync(), 4);
+        const errors =  getErrors(user.validateSync(), 3);
         expect(errors.name.properties.message).toEqual('Name is required');
         expect(errors.email.properties.message).toEqual('Email is required');
         expect(errors.zipcode.properties.message).toEqual('Zip code is required');
-        expect(errors.initialPreferences.properties.message).toEqual('At least one initial preference required');
     });
 });
