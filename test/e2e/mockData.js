@@ -12,9 +12,7 @@ beforeEach(() => {
 beforeEach(() => {
     return dropCollection('logs');
 });
-beforeEach(() => {
-    return dropCollection('evenings');
-});
+
 let createdUsers;
 let createdLogs;
 let createdEvenings;
@@ -25,21 +23,21 @@ let users = [
         email: 'user1@user1.com',
         zipcode: '97202',
         clearPassword: 'abcd1',
-        keywords: ['japanese', 'cheap', 'cocktails']
+        initialPreferences: ['pref1', 'pref2', 'pref3', 'pref4', 'pref5', 'pref6', 'pref7', 'pref8', 'pref9']
     },
     {
         name: 'User2',
         email: 'user2@user2.com',
         zipcode: '94061',
         clearPassword: 'abcd2',
-        keywords: ['quiet', 'art', 'steak']
+        initialPreferences: ['pref1', 'pref2', 'pref3', 'pref4', 'pref5', 'pref6', 'pref7', 'pref8', 'pref9']
     },
     {
         name: 'User3',
         email: 'user3@user3.com',
         zipcode: '97214',
         clearPassword: 'abcd3',
-        keywords: ['beer', 'tapas', 'patio']
+        initialPreferences: ['pref1', 'pref2', 'pref3', 'pref4', 'pref5', 'pref6', 'pref7', 'pref8', 'pref9']
     }
 ];
 
