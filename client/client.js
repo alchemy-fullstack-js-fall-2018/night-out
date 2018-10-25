@@ -1,15 +1,17 @@
 const inquirer = require('inquirer');
-const request = require('superagent');
+const { haveAccount, handleHaveAccount } = require('./lib/have-account');
 
-const email = {
-    type: 'input',
-    name: 'email',
-    message: 'Please enter your email address.'
-};
+inquirer.prompt(haveAccount).then(handleHaveAccount);
 
-const password = {
-    type: 'password',
-    name: 'password',
-    message: 'Please enter your password.'
-};
 
+//no: (sign up)
+
+//after logged in
+//should i create an evening? 
+//--> create evening and price
+//do you want to rate an evening?
+//-->list evenings
+// -->select
+//   -->rate
+//    -->like
+//     -->dislike
