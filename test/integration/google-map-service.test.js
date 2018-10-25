@@ -1,5 +1,5 @@
-require('dotenv').config();
 const { getLocation, getPlaces } = require('../../lib/util/google-map-service');
+jest.mock('../../lib/util/google-map-service');
 
 describe('google map integration', () => {
     describe('google location integration', () => {

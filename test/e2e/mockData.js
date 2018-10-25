@@ -6,6 +6,9 @@ const app = require('../../lib/app');
 const { Types } = require('mongoose');
 const Log = require('../../lib/models/Log');
 
+jest.mock('../../lib/util/google-map-service');
+
+
 beforeEach(() => {
     return dropCollection('users');
 });
