@@ -20,7 +20,6 @@ describe('Evening model', () => {
 
         const errors = getErrors(evening.validateSync(), 2);
         expect(errors.user.properties.message).toEqual('user required');
-        // expect(errors.logs.properties.message).toEqual('Three Google Place Id\'s required');
         expect(errors.price.properties.message).toEqual('price required 0-4');
 
     });

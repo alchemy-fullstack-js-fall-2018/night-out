@@ -21,6 +21,5 @@ describe('User Model', () => {
         expect(errors.name.properties.message).toEqual('Name is required');
         expect(errors.email.properties.message).toEqual('Email is required');
         expect(errors.zipcode.properties.message).toEqual('Zip code is required');
-        // expect(errors.keywords.properties.message).toEqual('At least one initial preference required');
     });
 });
