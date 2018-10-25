@@ -21,8 +21,9 @@ const handleSignIn = (answers) => {
     request
         .post(`${HOST}/api/auth/signin`)
         .send(answers)
-        .then(() => {
-            return inquirer.prompt(createEvening).then(handleCreateEvening)
+        .then(res => {
+            const token = res.body.token;
+            return inquirer.prompt(createEvening).then(handleCreateEvening(token));
         });
 };
 
