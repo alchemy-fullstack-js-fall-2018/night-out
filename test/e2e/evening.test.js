@@ -14,7 +14,7 @@ describe('validates a vertical slice of the Evening model', () => {
         return request(app)
             .post('/api/evenings')
             .set('Authorization', `Bearer ${getToken()}`)
-            .send({ zipcode: 97209 })
+            .send({ zipcode: 97209, keywords: ['quiet', 'tapas'] })
             .then(res => {
                 expect(res.body).toEqual({
                     _id: expect.any(String),
