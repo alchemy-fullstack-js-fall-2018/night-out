@@ -1,7 +1,8 @@
 // const inquirer = require('inquirer');
+
+require('dotenv').config();
 const request = require('superagent');
 
-const HOST = 'http://localhost:7980';
 const keywords = ['quiet', 'hip', 'elegant', 'family-friendly', 'pizza', 'japanese', 'chinese', 'gluten-free', 'vegan', 'thai', 'italian', 'burgers', 'coffee', 'cocktails', 'beer', 'sports', 'jazz', 'dancing', 'art', 'museum', 'intimate', 'lively'];
 
 const createEvening = [
@@ -20,7 +21,7 @@ const createEvening = [
 
 const handleCreateEvening = token => answers => {
     request
-        .post(`${HOST}/api/evenings`)
+        .post(`${process.env.HOST}/api/evenings`)
         .set('Authorization', `Bearer ${token}`)
         .send(answers)
         .then(console.log(answers));

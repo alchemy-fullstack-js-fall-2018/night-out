@@ -1,8 +1,9 @@
+require('dotenv').config();
 const inquirer = require('inquirer');
 const request = require('superagent');
 const { createEvening, handleCreateEvening } = require('./create-evening');
 
-const HOST = 'http://localhost:7980';
+
 
 const signIn = [
     { 

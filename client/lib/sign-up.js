@@ -1,8 +1,7 @@
+require('dotenv').config();
 const inquirer = require('inquirer');
 const request = require('superagent');
 const { signIn, handleSignIn } = require('./sign-in');
-
-const HOST = 'http://localhost:7980';
 
 const signUp = [
     { 
