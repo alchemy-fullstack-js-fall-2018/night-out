@@ -14,39 +14,40 @@ describe('validates a vertical slice of the Evening model', () => {
         return request(app)
             .post('/api/evenings')
             .set('Authorization', `Bearer ${getToken()}`)
-            .send({ zipcode: 97209, keywords: ['quiet', 'tapas'] })
+            .send({ zipcode: '97209', keywords: ['quiet', 'tapas'] })
             .then(res => {
                 expect(res.body).toEqual({
                     _id: expect.any(String),
                     user: createdUsers[0]._id.toString(),
                     rating: 'unknown',
+                    zipcode: '97209',
                     logs: [{
                         _id:  expect.any(String),
-                        place_id: expect.any(String),
+                        place_id: '1234',
                         user: createdUsers[0]._id.toString(),
                         tags: expect.any(Array),
-                        name: expect.any(String),
-                        price: expect.any(Number),
+                        name: 'some restaurant',
+                        price: 2,
                         rating: 'unknown',
                     }, 
                     {
                         _id:  expect.any(String),
-                        place_id: expect.any(String),
+                        place_id: '1234',
                         user: createdUsers[0]._id.toString(),
                         tags: expect.any(Array),
-                        name: expect.any(String),
-                        price: expect.any(Number),
+                        name: 'some restaurant',
+                        price: 2,
                         rating: 'unknown',
                     }, 
                     {
                         _id:  expect.any(String),
-                        place_id: expect.any(String),
+                        place_id: '1234',
                         user: createdUsers[0]._id.toString(),
                         tags: expect.any(Array),
-                        name: expect.any(String),
-                        price: expect.any(Number),
+                        name: 'some restaurant',
+                        price: 2,
                         rating: 'unknown',
-                    }],
+                    }], 
                     price: expect.any(Number)
 
                 });
