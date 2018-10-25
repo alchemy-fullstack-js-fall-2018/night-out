@@ -1,5 +1,6 @@
 const inquirer = require('inquirer');
 const request = require('superagent');
+const { createEvening, handleCreateEvening } = require('./create-evening');
 
 const HOST = 'http://localhost:7980';
 
@@ -20,7 +21,9 @@ const handleSignIn = (answers) => {
     request
         .post(`${HOST}/api/auth/signin`)
         .send(answers)
-        .then(console.log('hey bro u signed in'))
+        .then(() => {
+            return inquirer.prompt(createEvening).then(handleCreateEvening)
+        });
 };
 
 module.exports = {

@@ -28,7 +28,7 @@ const signUp = [
     {
         type: 'checkbox',
         name: 'keywords',
-        message: 'Please select your preferences.',
+        message: 'Please select your preferences. Use the space bar to select and press Enter to confirm.',
         choices: ['quiet', 'elegant', 'hip', 'pizza', 'sushi'] 
     }
 ];
