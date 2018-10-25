@@ -82,9 +82,12 @@ describe('validates a vertical slice of the Evening model', () => {
             .set('Authorization', `Bearer ${getToken()}`)
             .query({ price: 2 })
             .then(res => {
-                expect(res.body).toEqual(createdEvenings.filter(evening => evening.price <= 2));
+                createdEvenings.filter(evening => evening.price <= 2).forEach(evening => {
+                    expect(res.body).toContainEqual(evening);
+                });
             });
     });
+    
     it('gets evenings rating by query', () => {
         const createdEvenings = getEvenings();
 
@@ -93,7 +96,9 @@ describe('validates a vertical slice of the Evening model', () => {
             .set('Authorization', `Bearer ${getToken()}`)
             .query({ rating: 'unknown' })
             .then(res => {
-                expect(res.body).toEqual(createdEvenings.filter(evening => evening.rating === 'unknown'));
+                createdEvenings.filter(evening => evening.rating === 'unknown').forEach(evening => {
+                    expect(res.body).toContainEqual(evening);
+                });
             });
     });
 });
