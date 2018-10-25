@@ -73,32 +73,4 @@ describe('validates a vertical slice of the Evening model', () => {
                 expect(res.body).toEqual(createdEvenings[0]);
             });
     });
-
-    it('gets all evenings with low price', () => {
-        const createdEvenings = getEvenings();
-
-        return request(app)
-            .get('/api/evenings')
-            .set('Authorization', `Bearer ${getToken()}`)
-            .query({ price: 2 })
-            .then(res => {
-                createdEvenings.filter(evening => evening.price <= 2).forEach(evening => {
-                    expect(res.body).toContainEqual(evening);
-                });
-            });
-    });
-    
-    it('gets evenings rating by query', () => {
-        const createdEvenings = getEvenings();
-
-        return request(app)
-            .get('/api/evenings')
-            .set('Authorization', `Bearer ${getToken()}`)
-            .query({ rating: 'unknown' })
-            .then(res => {
-                createdEvenings.filter(evening => evening.rating === 'unknown').forEach(evening => {
-                    expect(res.body).toContainEqual(evening);
-                });
-            });
-    });
 });

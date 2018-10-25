@@ -29,15 +29,4 @@ describe('validates vertical slices of log posts', () => {
                 expect(res.body).toEqual([createdLogs[0]]);
             });
     });
-
-    it('gets all logs by query', () => {
-        const createdLogs = getLogs();
-
-        return request(app).get('/api/logs')
-            .set('Authorization', `Bearer ${getToken()}`)
-            .query({ rating: 'liked' })
-            .then(res => {
-                expect(res.body).toContainEqual(createdLogs[0]);
-            });
-    });
 });
