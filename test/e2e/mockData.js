@@ -12,7 +12,9 @@ beforeEach(() => {
 beforeEach(() => {
     return dropCollection('logs');
 });
-
+beforeEach(() => {
+    return dropCollection('evenings');
+});
 let createdUsers;
 let createdLogs;
 let createdEvenings;

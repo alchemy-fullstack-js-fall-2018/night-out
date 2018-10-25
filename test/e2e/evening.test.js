@@ -73,4 +73,20 @@ describe('validates a vertical slice of the Evening model', () => {
                 expect(res.body).toEqual(createdEvenings[0]);
             });
     });
+
+    it('gets evenings by query', () => {
+        return request(app)
+            .get('/api/evenings')
+            .set('Authorization', `Bearer ${getToken()}`)
+            .query({ price: 2 })
+            .then(res => {
+                expect(res.body).toContainEqual({
+                    _id: expect.any(String),
+                    user: expect.any(String),
+                    logs: expect.any(Array),
+                    rating: expect.any(String),
+                    price: 2
+                });
+            });
+    });
 });
