@@ -1,4 +1,7 @@
 const inquirer = require('inquirer');
+const request = require('superagent');
+
+const HOST = 'http://localhost:7980';
 
 const signIn = [
     { 
@@ -8,13 +11,16 @@ const signIn = [
     },
     {
         type: 'password',
-        name: 'password',
+        name: 'clearPassword',
         message: 'Please enter your password.' 
     }
 ];
 
-const handleSignIn = answers => {
-    console.log(answers);
+const handleSignIn = (answers) => {
+    request
+        .post(`${HOST}/api/auth/signin`)
+        .send(answers)
+        .then(console.log('hey bro u signed in'))
 };
 
 module.exports = {

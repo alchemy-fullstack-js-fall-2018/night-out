@@ -16,7 +16,6 @@ const handleHaveAccount = answers => {
     }
     else {
         return inquirer.prompt(signUp).then(handleSignUp);
-
     }
 };
 
