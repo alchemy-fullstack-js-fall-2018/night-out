@@ -14,7 +14,7 @@ describe('user routes', () => {
                 clearPassword: 'password',
                 email: 'al@al.com',
                 zipcode: '90403',
-                initialPreferences: ['thai food', 'coffee', 'tiki drinks']
+                keywords: ['thai food', 'coffee', 'tiki drinks']
             })
             .then(({ body: user }) => {
                 expect(user).toEqual({
@@ -22,7 +22,7 @@ describe('user routes', () => {
                     name: 'Al',
                     email: 'al@al.com',
                     zipcode: '90403',
-                    initialPreferences: ['thai food', 'coffee', 'tiki drinks']
+                    keywords: ['thai food', 'coffee', 'tiki drinks']
                 });
             });
     });
