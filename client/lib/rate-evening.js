@@ -9,7 +9,7 @@ const rateEvening = [
 
 ];
 
-const handleRateEvening = () => {
+const handleRateEvening = token => {
     //list all evenings, ask user to rate one
     const question = {
         type: 'list',
@@ -17,6 +17,17 @@ const handleRateEvening = () => {
         message: 'Which would you like to rate?',
         choices: []
     };
+
+    request
+        .get(`${process.env.HOST}/api/evenings`)
+        .set('Authorization', `Bearer ${token}`)
+        .then(res => {
+            console.log(res.text);
+            // evenings.forEach(evening => {
+            //     question.choices.push(evening);
+            // });
+        });
+
 };
 
 
