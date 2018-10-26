@@ -4,9 +4,9 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "jest": "jest --verbose",
+        "jest": "jest --runInBand --verbose",
         "test": "npm run jest",
-        "test:watch": "npm run jest -- --runInBand --watch",
+        "test:watch": "npm run jest -- --watch",
         "start:watch": "nodemon index.js",
         "start": "node index.js"
     },
