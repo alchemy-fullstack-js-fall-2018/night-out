@@ -13,7 +13,6 @@ const rating = {
 };
 
 const handleRating = token => answers => {
-    //assume answers has an evening and that that evening has a .rating
     let rating = 'disliked';
 
     if(answers.rating) {
