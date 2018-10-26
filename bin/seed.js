@@ -1,8 +1,8 @@
 
 
 const request = require('superagent');
-const HOST = 'http://localhost:7980';
-const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7ImtleXdvcmRzIjpbXSwiX2lkIjoiNWJkMjcwNjk0NzQ2MDRmMGZkYTM2NjY1IiwibmFtZSI6Ik1hY2siLCJlbWFpbCI6InRlc3RAdGVzdC5jb20iLCJ6aXBjb2RlIjoiOTcyMDkifSwiaWF0IjoxNTQwNTE4MDQwLCJleHAiOjE1NDA1MjE2NDB9.K5or-7O_sSlzVSWf82nhsp7BjNR6bmOamLpE7apeXFM';
+const HOST = 'https://alchemy-night-out.herokuapp.com/';
+const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7ImtleXdvcmRzIjpbXSwiX2lkIjoiNWJkMGIxODFmZTQ4ZmEwMDE1MjdiMjdjIiwiaW5pdGlhbFByZWZlcmVuY2VzIjpbInJlc3RhdXJhbnQiXSwibmFtZSI6InJ5YW4iLCJlbWFpbCI6InJ5YW5AbWFpbGluYXRvci5jb20iLCJ6aXBjb2RlIjoiOTcyMjkifSwiaWF0IjoxNTQwNTIxMjUxLCJleHAiOjE1NDA1MjQ4NTF9.l8nJ9ya6t7puVICUd2RekDwsKhLD6fC7wIjmnMpsQq0';
 
 
 const createEvening = () => {
