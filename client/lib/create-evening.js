@@ -24,7 +24,11 @@ const handleCreateEvening = token => answers => {
         .post(`${process.env.HOST}/api/evenings`)
         .set('Authorization', `Bearer ${token}`)
         .send(answers)
-        .then(res => console.log(res.body));
+        .then(res => {
+            res.body.logs.forEach(log => {
+                console.log('\n', log.name);
+            });
+        });
 };
 
 module.exports = {
