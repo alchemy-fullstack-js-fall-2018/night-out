@@ -1,5 +1,3 @@
-// const inquirer = require('inquirer');
-
 require('dotenv').config();
 const request = require('superagent');
 
