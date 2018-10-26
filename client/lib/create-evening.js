@@ -20,7 +20,7 @@ const createEvening = [
 ];
 
 const handleCreateEvening = token => answers => {
-    request
+    return request
         .post(`${process.env.HOST}/api/evenings`)
         .set('Authorization', `Bearer ${token}`)
         .send(answers)

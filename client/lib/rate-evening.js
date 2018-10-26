@@ -2,15 +2,31 @@ require('dotenv').config();
 const inquirer = require('inquirer');
 const request = require('superagent');
 
-//get all evenings for one user
-//user select one and rates it (like/ dislike)
-
 const rateEvening = [
 
 ];
 
+const rating = {
+    type: 'confirm',
+    name: 'rating',
+    message: 'Did you enjoy your night out?'
+};
+
+const handleRating = token => answers => {
+    //assume answers has an evening and that that evening has a .rating
+    let rating = 'disliked';
+
+    if(answers.rating) {
+        rating = 'liked';
+    }
+    return request
+        .put(`${process.env.HOST}/api/evenings/${answers.toRate._id}`)
+        .set('Authorization', `Bearer ${token}`)
+        .send({ rating })
+        .then(() => console.log('Thanks for rating your night out!'));
+};
+
 const handleRateEvening = token => {
-    //list all evenings, ask user to rate one
     const question = {
         type: 'list',
         name: 'toRate',
@@ -18,16 +34,19 @@ const handleRateEvening = token => {
         choices: []
     };
 
-    request
+    return request
         .get(`${process.env.HOST}/api/evenings`)
         .set('Authorization', `Bearer ${token}`)
         .then(res => {
-            console.log(res.text);
-            // evenings.forEach(evening => {
-            //     question.choices.push(evening);
-            // });
+            question.choices = res.body.map(evening => {
+                return {
+                    name: evening.logs.map(log => log.name).join('  -->  '),
+                    value: evening,
+                    short: evening.logs.map(log => log.name).join('  -->  ')
+                };  
+            });
+            return inquirer.prompt([question, rating]).then(handleRating(token));
         });
-
 };
 
 

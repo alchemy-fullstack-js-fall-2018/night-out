@@ -24,7 +24,7 @@ const signIn = [
 ];
 
 const handleSignIn = (answers) => {
-    request
+    return request
         .post(`${process.env.HOST}/api/auth/signin`)
         .send(answers)
         .then(res => {

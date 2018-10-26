@@ -33,7 +33,7 @@ const signUp = [
 ];
 
 const handleSignUp = answers => {
-    request
+    return request
         .post(`${process.env.HOST}/api/auth/signup`)
         .send(answers)
         .then(() => {
