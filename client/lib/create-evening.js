@@ -25,7 +25,7 @@ const handleCreateEvening = token => answers => {
         .set('Authorization', `Bearer ${token}`)
         .send(answers)
         .then(res => {
-            res.body.logs.forEach(log => {
+            res.body.logs.forEach(log => {  /* eslint-disable-next-line no-console */
                 console.log('\n', log.name);
             });
         });

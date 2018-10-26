@@ -21,7 +21,7 @@ const handleRating = token => answers => {
     return request
         .put(`${process.env.HOST}/api/evenings/${answers.toRate._id}`)
         .set('Authorization', `Bearer ${token}`)
-        .send({ rating })
+        .send({ rating }) /* eslint-disable-next-line no-console */
         .then(() => console.log('Thanks for rating your night out!'));
 };
 
@@ -47,7 +47,6 @@ const handleRateEvening = token => {
             return inquirer.prompt([question, rating]).then(handleRating(token));
         });
 };
-
 
 module.exports = {
     rateEvening,
