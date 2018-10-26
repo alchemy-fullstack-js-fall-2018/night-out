@@ -34,7 +34,7 @@ const signUp = [
 
 const handleSignUp = answers => {
     request
-        .post(`${HOST}/api/auth/signup`)
+        .post(`${process.env.HOST}/api/auth/signup`)
         .send(answers)
         .then(() => {
             return inquirer.prompt(signIn).then(handleSignIn);

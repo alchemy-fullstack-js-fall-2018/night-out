@@ -20,7 +20,7 @@ const signIn = [
 
 const handleSignIn = (answers) => {
     request
-        .post(`${HOST}/api/auth/signin`)
+        .post(`${process.env.HOST}/api/auth/signin`)
         .send(answers)
         .then(res => {
             const token = res.body.token;
