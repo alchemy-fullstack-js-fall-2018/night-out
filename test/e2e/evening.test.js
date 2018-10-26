@@ -47,7 +47,8 @@ describe('validates a vertical slice of the Evening model', () => {
                         price: expect.any(Number),
                         rating: 'unknown',
                     }],
-                    price: expect.any(Number)
+                    price: expect.any(Number),
+                    zipcode: expect.any(String)
 
                 });
             });
